@@ -25,11 +25,15 @@ int ft_widthcounter(char *str, void *arg)
     if (type == 'c')
         width = 1;
     if (type == 'd' || type == 'i')
-        width = ft_strlen(ft_itoa_long((long)arg));
+        width = ft_strlen(ft_itoa((int)arg));
     if (type == 'p')
-        width = 2 + ft_strlen(ft_itoa_long((long)arg));
+        width = 2 + ft_strlen(ft_itoa_ptr((unsigned long)arg));
     if (type == 'u')
         width = ft_strlen(ft_itoa_long((unsigned int)arg));
+    if (type == 'x')
+        width = ft_strlen(ft_itoa_hex((unsigned int)arg));
+    if (type == 'X')
+        width = ft_strlen(ft_itoa_hex((unsigned int)arg));
     // while (*(str + *i) != '.' && ft_isformat(str + *i) != 1)
     //     (*i)++;
     return (width);

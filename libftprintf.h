@@ -6,7 +6,7 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:32:15 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/09 08:40:43 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/09 17:21:33 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,15 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int     ft_printf(const char *str, ...);
-void	ft_puthexlower_fd(int n, int fd);
-void	ft_puthexupper_fd(int n, int fd);
+void	ft_puthexlower_fd(unsigned int n, int fd);
+void	ft_puthexupper_fd(unsigned int n, int fd);
 void	ft_puthexpointer_fd(long n, int fd);
 void	ft_putunsnbr_fd(unsigned int n, int fd);
 void    ft_handletype(char *str, void *arg);
 char    ft_detertype(char *str, void *arg);
 int     ft_widthcounter(char *str, void *arg);
 char	*ft_itoa_long(long n);
+char   	*ft_itoa_hex(unsigned int n);
+char	*ft_itoa_ptr(long n);
 
 #endif

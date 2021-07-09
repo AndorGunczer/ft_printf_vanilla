@@ -29,9 +29,9 @@ void    ft_handletype(char *str, void *arg)
     else if (*str == 'd' || *str == 'i')
         ft_putnbr_fd((int)arg, 1);
     else if (*str == 'x')
-        ft_puthexlower_fd((int)arg, 1);
+        ft_puthexlower_fd((unsigned int)arg, 1);
     else if (*str == 'X')
-        ft_puthexupper_fd((int)arg, 1);
+        ft_puthexupper_fd((unsigned int)arg, 1);
     else if (*str == 'u')
         ft_putunsnbr_fd((unsigned int)arg, 1);
 }

@@ -6,23 +6,18 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 10:50:06 by agunczer          #+#    #+#             */
-/*   Updated: 2021/06/30 16:24:01 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/09 15:08:38 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char	ft_converthex(int hex);
+static char	ft_converthex(unsigned int hex);
 
-void	ft_puthexlower_fd(int n, int fd)
+void	ft_puthexlower_fd(unsigned int n, int fd)
 {
-	if (n == -2147483648)
+	if (n == 0x80000000)
 		ft_putstr_fd("80000000", fd);
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_puthexlower_fd(-n, fd);
-	}
 	else if (n >= 16)
 	{
 		ft_puthexlower_fd(n / 16, fd);
@@ -32,7 +27,7 @@ void	ft_puthexlower_fd(int n, int fd)
 		ft_putchar_fd(ft_converthex(n), fd);
 }
 
-static char	ft_converthex(int hex)
+static char	ft_converthex(unsigned int hex)
 {
 	if (hex >= 0 && hex <= 9)
 		return (hex + '0');
