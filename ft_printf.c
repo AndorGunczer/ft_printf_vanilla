@@ -6,49 +6,47 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 12:08:55 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/09 14:47:31 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/10 09:01:11 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libftprintf.h"
-#include "libft/libft.h"
-#include <stdio.h>
 
-static int  ft_isformat(char *str)
+static int	ft_isformat(char *str)
 {
-    if (*str == 'd' || *str == 'i' || *str == 'c' || *str == 's' || *str == 'u'
-    || *str == 'p' || *str == 'x' || *str == 'X')
-        return (1);
-    else
-        return (0);
+	if (*str == 'd' || *str == 'i' || *str == 'c' || *str == 's' || *str == 'u'
+		|| *str == 'p' || *str == 'x' || *str == 'X')
+		return (1);
+	else
+		return (0);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-    va_list ap;
-    void *arg;
-    int printcount;
+	va_list	ap;
+	void	*arg;
+	int		printcount;
 
-    va_start(ap, str);
-    printcount = 0;
-    while (*str != '\0')
-    {
-        // printf("-%d : %c\n", printcount, *str);
-        if (*str == '%')
-        {
-            arg = va_arg(ap, void*);
-            ft_handletype((char *)str, arg);
-            printcount += ft_widthcounter((char *)str, arg);
-            while (ft_isformat((char *)str) != 1)
-                str++;
-        }
-        else
-        {
-            ft_putchar_fd(*str, 1);
-            printcount++;
-        }
-        str++;
-    }
-    return (printcount);
+	va_start(ap, str);
+	printcount = 0;
+	while (*str != '\0')
+	{
+		if (*str == '%')
+		{
+			arg = va_arg(ap, void *);
+			ft_handletype((char *)str, arg);
+			printcount += ft_widthcounter((char *)str, arg);
+			while (ft_isformat((char *)str) != 1)
+				str++;
+		}
+		else
+		{
+			ft_putchar_fd(*str, 1);
+			printcount++;
+		}
+		str++;
+	}
+	va_end(ap);
+	return (printcount);
 }

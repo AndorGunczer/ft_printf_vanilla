@@ -6,11 +6,11 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 09:32:49 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/02 12:55:41 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/10 09:01:50 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libftprintf.h"
 
 static int	num_count(long n);
 static char	*assigner(long n, int i, int j, char *str);

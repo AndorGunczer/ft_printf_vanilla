@@ -6,16 +6,16 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:48:14 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/09 17:24:08 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/10 13:53:17 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libftprintf.h"
 
-static int	num_count(long n);
-static char	*assigner(long n, int i, int j, char *str);
+static int	num_count(unsigned long n);
+static char	*assigner(unsigned long n, int i, int j, char *str);
 
-char	*ft_itoa_ptr(long n)
+char	*ft_itoa_ptr(unsigned long n)
 {
 	int		i;
 	int		digits;
@@ -33,7 +33,7 @@ char	*ft_itoa_ptr(long n)
 	return (assigner(n, i, j, str));
 }
 
-static	int	num_count(long n)
+static	int	num_count(unsigned long n)
 {
 	int			i;
 	long long	num;
@@ -48,16 +48,11 @@ static	int	num_count(long n)
 	return (i);
 }
 
-static char	*assigner(long n, int i, int j, char *str)
+static char	*assigner(unsigned long n, int i, int j, char *str)
 {	
 	int	digits;
 
 	digits = num_count(n);
-	if (n == -2147483648)
-	{
-		ft_strlcpy(str, "-2147483648", 12);
-		return (str);
-	}
 	while (i >= j)
 	{
 		str[i] = (n % 16) + '0';

@@ -6,11 +6,11 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 11:04:35 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/09 15:13:34 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/10 09:01:52 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libftprintf.h"
 
 static int	num_count(unsigned int n);
 static char	*assigner(unsigned int n, int i, int j, char *str);
@@ -41,8 +41,8 @@ static	int	num_count(unsigned int n)
 
 	i = 0;
 	num = n;
-    if (n == 0x80000000)
-        return (8);
+	if (n == 0x80000000)
+		return (8);
 	if (num < 0)
 	{
 		i++;
@@ -61,23 +61,17 @@ static char	*assigner(unsigned int n, int i, int j, char *str)
 	int	digits;
 
 	digits = num_count(n);
-    if (n == 0x80000000)
-    {
-        ft_strlcpy(str, "80000000", 9);
-        return (str);
-    }
-    // if (n < 0)
-    // {
-    //     *str = '-';
-    //     n *= -1;
-    //     j++;
-    // }
+	if (n == 0x80000000)
+	{
+		ft_strlcpy(str, "80000000", 9);
+		return (str);
+	}
 	while (i >= j)
 	{
-        if (n % 16 < 10)
-		    str[i] = ft_converthex(n % 16);
-        else
-    		str[i] = (n % 16) + '0';
+		if (n % 16 < 10)
+			str[i] = ft_converthex(n % 16);
+		else
+			str[i] = (n % 16) + '0';
 		n /= 16;
 		i--;
 	}
@@ -103,5 +97,3 @@ static char	ft_converthex(unsigned int hex)
 		return ('f');
 	return (0);
 }
-
-
