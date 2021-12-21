@@ -6,19 +6,20 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 13:30:54 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/10 09:01:45 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/20 11:03:54 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-#include <stdarg.h>
-#include "libftprintf.h"
-
 static int	ft_isformat(char *str);
 
-void	ft_handletype(char *str, void *arg)
+int 	ft_handletype(char *str, void *arg)
 {
+	int	i;
+
+	i = ft_widthcounter(str, arg);
+	str++;
 	while (ft_isformat(str) != 1)
 		str++;
 	if (*str == 'c')
@@ -35,12 +36,13 @@ void	ft_handletype(char *str, void *arg)
 		ft_puthexupper_fd((unsigned int)arg, 1);
 	else if (*str == 'u')
 		ft_putunsnbr_fd((unsigned int)arg, 1);
+	return (i);
 }
 
 static int	ft_isformat(char *str)
 {
 	if (*str == 'd' || *str == 'i' || *str == 'c' || *str == 's' || *str == 'u'
-		|| *str == 'p' || *str == 'x' || *str == 'X')
+		|| *str == 'p' || *str == 'x' || *str == 'X' || *str == '%')
 		return (1);
 	else
 		return (0);

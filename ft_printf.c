@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ************************************************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 12:08:55 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/10 09:01:11 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/20 09:37:58 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,25 @@ static int	ft_isformat(char *str)
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	void	*arg;
 	int		printcount;
 
 	va_start(ap, str);
 	printcount = 0;
 	while (*str != '\0')
 	{
-		if (*str == '%')
+		if (*str == '%' && *(str + 1) == '%')
 		{
-			arg = va_arg(ap, void *);
-			ft_handletype((char *)str, arg);
-			printcount += ft_widthcounter((char *)str, arg);
+			printcount += handlepercent((char *)str);
+			str++;
+		}
+		else if (*str == '%')
+		{
+			printcount += ft_handletype((char *)str, va_arg(ap, void *));
 			while (ft_isformat((char *)str) != 1)
 				str++;
 		}
 		else
-		{
-			ft_putchar_fd(*str, 1);
-			printcount++;
-		}
+			ft_putchar_inc(*str, &printcount);
 		str++;
 	}
 	va_end(ap);

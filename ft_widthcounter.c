@@ -6,7 +6,7 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 09:40:11 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/10 09:22:11 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/19 19:18:21 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	ft_widthcounter(char *str, void *arg)
 	if (type == 'c')
 		width = 1;
 	if (type == 'd' || type == 'i')
-		width = ft_strlen(ft_itoa((int)arg));
+		width = num_count((int)arg);
 	if (type == 'p')
-		width = 2 + ft_strlen(ft_itoa_ptr((unsigned long)arg));
+		width = 2 + num_count_ptr((unsigned long)arg);
 	if (type == 'u')
-		width = ft_strlen(ft_itoa_long((unsigned int)arg));
+		width = num_count_long((unsigned int)arg);
 	if (type == 'x')
-		width = ft_strlen(ft_itoa_hex((unsigned int)arg));
+		width = num_count_hex((unsigned int)arg);
 	if (type == 'X')
-		width = ft_strlen(ft_itoa_hex((unsigned int)arg));
+		width = num_count_hex((unsigned int)arg);
 	return (width);
 }

@@ -6,7 +6,7 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 11:26:13 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/10 09:21:38 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:33:34 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	ft_isformat(char *str);
 
 char	ft_detertype(char *str)
 {
+	str++;
 	while (ft_isformat((char *)str) != 1)
 		str++;
 	if (*str == 'c')
@@ -40,7 +41,7 @@ char	ft_detertype(char *str)
 static int	ft_isformat(char *str)
 {
 	if (*str == 'd' || *str == 'i' || *str == 'c' || *str == 's' || *str == 'u'
-		|| *str == 'p' || *str == 'x' || *str == 'X')
+		|| *str == 'p' || *str == 'x' || *str == 'X' || *str == '%')
 		return (1);
 	else
 		return (0);

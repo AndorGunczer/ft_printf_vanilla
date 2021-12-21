@@ -6,7 +6,7 @@
 /*   By: agunczer <agunczer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 10:50:06 by agunczer          #+#    #+#             */
-/*   Updated: 2021/07/09 15:08:38 by agunczer         ###   ########.fr       */
+/*   Updated: 2021/07/20 11:03:16 by agunczer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static char	ft_converthex(unsigned int hex);
 
 void	ft_puthexlower_fd(unsigned int n, int fd)
 {
-	if (n == 0x80000000)
-		ft_putstr_fd("80000000", fd);
-	else if (n >= 16)
+	if (n >= 16)
 	{
 		ft_puthexlower_fd(n / 16, fd);
 		ft_putchar_fd(ft_converthex(n % 16), fd);
